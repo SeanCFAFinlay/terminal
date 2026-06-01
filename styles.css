@@ -39,7 +39,7 @@ p{color:var(--muted)}
 @keyframes pulse{0%,100%{opacity:.78;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
 @media (prefers-reduced-motion:reduce){.reactor .coil,.reactor .core{animation:none}}
 
-.hero-reactor{position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:860px;height:860px;max-width:160vw;pointer-events:none;z-index:0;mask-image:radial-gradient(circle,#000 52%,transparent 80%)}
+.hero-reactor{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(860px,130vw);height:min(860px,130vw);pointer-events:none;z-index:0;mask-image:radial-gradient(circle,#000 52%,transparent 80%);overflow:hidden}
 .reactor-svg{width:100%;height:100%;display:block}
 .reactor-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .ring{transform-box:view-box;transform-origin:200px 200px;will-change:transform}
@@ -48,13 +48,14 @@ p{color:var(--muted)}
 .ring-inner{animation:spin 18s linear infinite}
 @keyframes spin-reverse{to{transform:rotate(-360deg)}}
 .reactor-core{opacity:1}
-.arcs .arc{transition:opacity .6s ease;transform-origin:200px 200px;transform-box:view-box}
-.hero:hover .arcs .arc-1{opacity:.5;animation:arc-shimmer 3s linear infinite}
-.hero:hover .arcs .arc-2{opacity:.4;animation:arc-shimmer 2.2s linear infinite reverse}
+.arcs .arc{transform-origin:200px 200px;transform-box:view-box}
+.arc-1{opacity:.35;animation:arc-shimmer 3s linear infinite}
+.arc-2{opacity:.25;animation:arc-shimmer 2.2s linear infinite reverse}
+.hero:hover .arc-1{opacity:.6}
+.hero:hover .arc-2{opacity:.5}
 @keyframes arc-shimmer{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){
-  .ring-outer,.ring-mid,.ring-inner,.reactor-core{animation:none}
-  .hero:hover .arcs .arc-1,.hero:hover .arcs .arc-2{animation:none;opacity:.3}
+  .ring-outer,.ring-mid,.ring-inner,.reactor-core,.arc-1,.arc-2{animation:none}
 }
 
 header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(7,10,11,.7);border-bottom:1px solid var(--line)}
@@ -79,7 +80,7 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rg
 .mobile-menu a{display:block;padding:15px 22px;color:var(--muted);border-top:1px solid var(--line)}
 
 section{padding:78px 0;position:relative}
-.hero{padding-top:60px;overflow:hidden}
+.hero{padding-top:60px;overflow:hidden;position:relative}
 .hero-grid{display:grid;gap:42px}
 .cred{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--faint);margin-top:24px}
 .trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
